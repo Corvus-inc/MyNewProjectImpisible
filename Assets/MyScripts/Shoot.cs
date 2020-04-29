@@ -9,11 +9,13 @@ public class Shoot : MonoBehaviour
     List<GameObject> Bullets;
 
     [SerializeField]
-    GameObject Bullet;//Сюда префаб объекта.
+    private GameObject Bullet;//Сюда префаб объекта.
     [SerializeField]
-    GameObject Point;//Метосто появления пули в момент выстрела.
+    private float power;
+    [SerializeField]
+    private GameObject Point;//Метосто появления пули в момент выстрела.
 
-    PoolGameObject NewPool;
+    private PoolGameObject NewPool;
         //int CountBullets = 99;
 
 
@@ -26,7 +28,7 @@ public class Shoot : MonoBehaviour
 
         //    Bullets.Add(NewBullet);
         //}
-        NewPool = new PoolGameObject(Bullet, 10);
+        NewPool = new PoolGameObject(Bullet, 100);
 
 
     }
@@ -41,9 +43,10 @@ public class Shoot : MonoBehaviour
             GameObject ReadyGo = NewPool.ObjectLeavePool();
             ReadyGo.SetActive(true);
             ReadyGo.transform.position = Point.transform.position;
-            ReadyGo.GetComponent<Rigidbody>().velocity = Point.transform.forward * 10;
-
-            ExecuteAfterTime(0.01f, ReadyGo) ;
+            ReadyGo.transform.rotation = Point.transform.rotation;
+            ReadyGo.GetComponent<Rigidbody>().velocity = Point.transform.forward * power;
+            StartCoroutine(ExecuteAfterTime(5f, ReadyGo));
+           
             //if (CountBullets >= 0)
             //{
             //    Bullets[CountBullets].transform.position = Point.transform.position;
@@ -64,6 +67,7 @@ public class Shoot : MonoBehaviour
         
     //}
     IEnumerator ExecuteAfterTime(float timeInSec, GameObject bull) // Это должно было работать как таймер, но не судьба. Надо разобраться.
+                                                                   //Это корутина. ЕЕ нужно запускать методом StartCoroutine(). Тогда все работает.
     {
         yield return new WaitForSeconds(timeInSec);
         bull.SetActive(false);

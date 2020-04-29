@@ -11,13 +11,12 @@ namespace Assets.MyScripts
 {
     class PoolGameObject:MonoBehaviour
     {
-        List<GameObject> pool;
+        private List<GameObject> pool; //основной   пул
 
-        List<GameObject> poolTemporary;
+        private List<GameObject> poolTemporary;// временное хранилище переданных объектов
 
-        GameObject ready;
-
-        int PoolCount { get; set; }
+        private GameObject ready; //объект для передачи
+        private int PoolCount { get; set; }
     
 
         public PoolGameObject(GameObject obj, int num) //Конструктор который создает пул на основе объекта и количества объектов. Объекты осоздаются не активные.
@@ -34,7 +33,8 @@ namespace Assets.MyScripts
             
 
         }
-        public GameObject ObjectLeavePool() //Метод который изымает из пула объект. 
+        public GameObject ObjectLeavePool() //Метод который извлекает из пула объекты и следит за его наполненностью. 
+            //Как вариант, можно поставить флаг, который будет подниматься когда основной пул будет пустеть. И тогда можно будет использовать временный пул, как основной. В таком случае ссылки на объекты не нужно будет возвращать обратно - они сами туда вернутся и флаг опустится. 
         {
             PoolCount = pool.Count - 1;
             if (PoolCount>0)
@@ -48,7 +48,7 @@ namespace Assets.MyScripts
             {
                 Flow();
                 ObjectsJoinPool();
-                PoolCount = 10;
+                PoolCount = 1;
                 return ready;
                 
                
@@ -64,7 +64,7 @@ namespace Assets.MyScripts
             pool.Reverse();
             poolTemporary.Clear();
         }
-        private void Flow() //Обеспечивает передачу ссылок из основного пула во временный.
+        private void Flow() //Обеспечивает передачу ссылок на объекты из основного пула во временный.
         {
                 ready = pool[PoolCount];
                 poolTemporary.Add(pool[PoolCount]);
