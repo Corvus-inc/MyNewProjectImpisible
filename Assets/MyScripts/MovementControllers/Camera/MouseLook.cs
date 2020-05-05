@@ -7,8 +7,8 @@ public class MouseLook : MonoBehaviour
 {
     public float mouseSensetivity = 100f;
 
-    public Transform playerBody; //Тело объекта к которому прикрепленна камера
-    private Transform camTransform;
+    //public Transform playerBody; //Тело объекта к которому прикрепленна камера
+    public Transform camTransform;
 
     float xRotation = 0f;
 
@@ -16,7 +16,7 @@ public class MouseLook : MonoBehaviour
     
     private void Start()
     {
-        camTransform = GetComponent<Transform>();
+        //camTransform = GetComponent<Transform>();
         Cursor.lockState = CursorLockMode.Locked;//Блокирует мышь внутри запущеной сцены.
     }
 
@@ -33,7 +33,7 @@ public class MouseLook : MonoBehaviour
         camTransform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f); //Меняет локальное положение оси, испольуя значения.
 
 
-        //camTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        //transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         //playerBody.Rotate(Vector3.up * mouseX);//Код который запускает поворот объекта камерой. Нужно убрать  yRotation из кода.
 

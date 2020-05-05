@@ -31,7 +31,7 @@ public class CharterControll : MonoBehaviour
             // We are grounded, so recalculate
             // move direction directly from axes
             // Мы заземлены, так что пересчитайте
-            // направление движения непосредственно от осей
+            // направление движения непосредственно от осейф
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection *= speed;
 
