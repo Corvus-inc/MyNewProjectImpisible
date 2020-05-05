@@ -4,7 +4,6 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Policy;
 using UnityEngine;
 
 namespace Assets.MyScripts
