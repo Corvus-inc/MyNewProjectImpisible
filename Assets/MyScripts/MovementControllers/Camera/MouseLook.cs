@@ -8,7 +8,7 @@ public class MouseLook : MonoBehaviour
     public float mouseSensetivity = 100f;
 
     //public Transform playerBody; //Тело объекта к которому прикрепленна камера
-    public Transform camTransform;
+    public Transform camTransform; //Если прикрепить примитивный объект, то он будет управляться мышью без кнопок.
 
     float xRotation = 0f;
 
@@ -30,7 +30,7 @@ public class MouseLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);//не позволяет значению смещения выходить за пределы числа 90 - 180° поворот.
         yRotation += mouseX;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
-        camTransform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f); //Меняет локальное положение оси, испольуя значения.
+        camTransform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f); //Меняет положение оси, испольуя значения. Local - использует значение направления родителя.
 
 
         //transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);

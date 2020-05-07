@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.MyScripts
 {
-    class PoolGameObject:MonoBehaviour
+    public class PoolGameObject:MonoBehaviour
     {
         private List<GameObject> pool; //основной   пул
 

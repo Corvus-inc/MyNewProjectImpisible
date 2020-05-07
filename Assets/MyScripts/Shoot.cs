@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+/// <summary>
+/// Класс реализации выстрела напрямую из пула объектов. В этом классе прописывается
+/// сам объект, его сила и точка откуда он будет появляться.
+/// Количество оюъектов регулируется, непосредственно, в классе создания пула объектов.
+/// </summary>
 
 public class Shoot : MonoBehaviour
 {
@@ -19,6 +24,7 @@ public class Shoot : MonoBehaviour
         //int CountBullets = 99;
 
 
+
     void Start()
     {
         //Bullets = new List<GameObject>(100);
@@ -29,11 +35,9 @@ public class Shoot : MonoBehaviour
         //    Bullets.Add(NewBullet);
         //}
         NewPool = new PoolGameObject(Bullet, 100);
-
+         
 
     }
-
-
     void Update()
     {
         //if (Bullets.Count <= 0)CreateBullet();
