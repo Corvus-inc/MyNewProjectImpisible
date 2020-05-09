@@ -16,9 +16,8 @@ public class MoveTowards : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
+        
             s_objectPosition.position = Vector3.MoveTowards(s_objectPosition.position, s_positionStop.position, Time.deltaTime*s_speed);
-        }
+        
     }
 }

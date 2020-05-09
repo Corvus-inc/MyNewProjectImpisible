@@ -16,8 +16,11 @@ namespace Assets.MyScripts
 
         private GameObject ready; //объект для передачи
         private int PoolCount { get; set; }
-    
 
+        private void Start()
+        {
+            print ("hi");
+        }
         public PoolGameObject(GameObject obj, int num) //Конструктор который создает пул на основе объекта и количества объектов. Объекты осоздаются не активные.
         {
             ready = obj;

@@ -11,16 +11,13 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    List<GameObject> Bullets;
+    [SerializeField]
+    public float power;
+    [SerializeField]
+    public GameObject point;//Метосто появления пули в момент выстрела.
 
-    [SerializeField]
-    private GameObject Bullet;//Сюда префаб объекта.
-    [SerializeField]
-    private float power;
-    [SerializeField]
-    private GameObject Point;//Метосто появления пули в момент выстрела.
-
-    private PoolGameObject NewPool;
+    float timeInSec = 10;
+    public PoolGameObject2 NewPool;
         //int CountBullets = 99;
 
 
@@ -34,7 +31,8 @@ public class Shoot : MonoBehaviour
 
         //    Bullets.Add(NewBullet);
         //}
-        NewPool = new PoolGameObject(Bullet, 100);
+
+        //NewPool = new PoolGameObject(Bullet, 100);
          
 
     }
@@ -46,10 +44,10 @@ public class Shoot : MonoBehaviour
         {
             GameObject ReadyGo = NewPool.ObjectLeavePool();
             ReadyGo.SetActive(true);
-            ReadyGo.transform.position = Point.transform.position;
-            ReadyGo.transform.rotation = Point.transform.rotation;
-            ReadyGo.GetComponent<Rigidbody>().velocity = Point.transform.forward * power;
-            StartCoroutine(ExecuteAfterTime(5f, ReadyGo));
+            ReadyGo.transform.position = point.transform.position;
+            ReadyGo.transform.rotation = point.transform.rotation;
+            ReadyGo.GetComponent<Rigidbody>().velocity = point.transform.forward * power;
+            StartCoroutine(ExecuteAfterTime(timeInSec, ReadyGo));
            
             //if (CountBullets >= 0)
             //{
