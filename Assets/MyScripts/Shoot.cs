@@ -1,4 +1,4 @@
-﻿using Assets.MyScripts;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -7,72 +7,70 @@ using UnityEngine;
 /// Класс реализации выстрела напрямую из пула объектов. В этом классе прописывается
 /// сам объект, его сила и точка откуда он будет появляться.
 /// Количество оюъектов регулируется, непосредственно, в классе создания пула объектов.
+/// 
+/// Было бы неплохо сделать выбор кнопки для выстрела.
 /// </summary>
 
 public class Shoot : MonoBehaviour
-{
+{ 
     [SerializeField]
     public float power;
     [SerializeField]
-    public GameObject point;//Метосто появления пули в момент выстрела.
+    public GameObject point;//Место появления пули в момент выстрела.
 
     float timeInSec = 10;
-    public PoolGameObject2 NewPool;
-        //int CountBullets = 99;
-
-
-
+    public PoolObjectGame NewPool;
+    public bool shootDontStop = false;
+    [Range(1, 1000)]
+    public float coolDown = 100f;
+    private bool coolDownFlag = true;
+    
     void Start()
     {
-        //Bullets = new List<GameObject>(100);
-        //for (int i = 0; i <= 99; i++)
-        //{
-        //    GameObject NewBullet = Instantiate(Bullet, Vector3.zero, Quaternion.identity);
-
-        //    Bullets.Add(NewBullet);
-        //}
-
-        //NewPool = new PoolGameObject(Bullet, 100);
-         
+                
 
     }
     void Update()
     {
-        //if (Bullets.Count <= 0)CreateBullet();
-
-        if (Input.GetMouseButtonDown(0))
+        if (shootDontStop == false)
         {
-            GameObject ReadyGo = NewPool.ObjectLeavePool();
-            ReadyGo.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartShoot();
+
+            } 
+        }
+        else StartShoot();
+    }
+    
+    //Метод отправляющий пулю в полет.
+    public void StartShoot()
+    {
+        if (coolDownFlag == true)
+        {
+            GameObject ReadyGo = NewPool.ObjectLeavePool(); //Взять объект из пула.
+           
+            StartCoroutine(OffAfterTime(timeInSec, ReadyGo));//Запустить таймеры.
+            StartCoroutine(StartAfterTime(coolDown*Time.deltaTime));
+            coolDownFlag = false;
+         
+            ReadyGo.SetActive(true);// Включить объект. Спозиционировать и отправить в полет.
             ReadyGo.transform.position = point.transform.position;
             ReadyGo.transform.rotation = point.transform.rotation;
             ReadyGo.GetComponent<Rigidbody>().velocity = point.transform.forward * power;
-            StartCoroutine(ExecuteAfterTime(timeInSec, ReadyGo));
-           
-            //if (CountBullets >= 0)
-            //{
-            //    Bullets[CountBullets].transform.position = Point.transform.position;
-            //    Bullets[CountBullets].transform.rotation = Point.transform.rotation;
-            //    Rigidbody s_rigi = Bullets[CountBullets].GetComponent<Rigidbody>();
-            //    s_rigi.velocity = Point.transform.forward * 10;
-            //    //s_rigi.velocity = Vector3.zero;
-            //    //s_rigi.AddForce(Point.transform.forward);
-            //    CountBullets -= 1;
-            //}
-            //else CountBullets = 9;
+            
         }
 
     }
-    //private void DeleteTimeBullet()
-    //{
-    //    Timer del = new Timer();
-        
-    //}
-    IEnumerator ExecuteAfterTime(float timeInSec, GameObject bull) // Это должно было работать как таймер, но не судьба. Надо разобраться.
-                                                                   //Это корутина. ЕЕ нужно запускать методом StartCoroutine(). Тогда все работает.
+    //Это корутина. ЕЕ нужно запускать методом StartCoroutine(). Тогда все работает.
+    IEnumerator OffAfterTime(float timeInSec, GameObject bull) 
     {
         yield return new WaitForSeconds(timeInSec);
         bull.SetActive(false);
     }
-
+    IEnumerator StartAfterTime(float timeInSec)
+    {
+        yield return new WaitForSeconds(timeInSec);
+        coolDownFlag = true;
+    }
 }

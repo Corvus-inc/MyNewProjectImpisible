@@ -1,8 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PoolGameObject2 : MonoBehaviour
+/// <summary>
+/// Класс нуждается в доработке. Но работает как нужно.
+/// Доработка скорее всего если и будет, то посредствам пересоздания данного класса.
+/// Это пул чисто из моей головы ни откуда не взятый. Способы создания человеческих
+/// пулов не были изучены.
+/// </summary>
+public class PoolObjectGame : MonoBehaviour
 {   private int poolCount;
     private List<GameObject> pool; //основной   пул
     private List<GameObject> poolTemporary;// временное хранилище переданных объектов

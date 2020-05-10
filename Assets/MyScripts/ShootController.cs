@@ -1,30 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.MyScripts;
 
- class ShootController : MonoBehaviour
+ public class ShootController : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject s_BulletObject;
+    public GameObject s_BulletObject;
     [SerializeField]
-    private int s_PoolNum;
+    public int s_PoolNum;
     [SerializeField]
-    private float s_PowerBullet;
+    public float s_PowerBullet;
     [SerializeField]
-    private GameObject s_StartPoint;
+    public bool s_DontStop;
+    [SerializeField]
+    public GameObject s_StartPoint;
+    [Range (1,1000)]
+    public float s_CoolDown;
 
-    private PoolGameObject2 s_PoolObject;
-    private BulletContainer s_PoolBullet;//Если null, то использовать s_PoolObject как компонент, если 
+    private PoolObjectGame s_PoolObject;
+    // Тут Должен быть контейфнер. Если null, то использовать s_PoolObject как компонент, если 
     private Shoot s_ShootShell;  
     
     
     
-    private void Start()
+    private void Awake()
     {
         
-        s_PoolObject = gameObject.AddComponent<PoolGameObject2>();
+        s_PoolObject = gameObject.AddComponent<PoolObjectGame>();
         s_PoolObject.ready = s_BulletObject;
         s_PoolObject.PoolNum = s_PoolNum;
 
@@ -32,6 +35,9 @@ using Assets.MyScripts;
         s_ShootShell.NewPool = s_PoolObject;
         s_ShootShell.power = s_PowerBullet;
         s_ShootShell.point = s_StartPoint;
+        s_ShootShell.coolDown = s_CoolDown;
+        s_ShootShell.shootDontStop = s_DontStop;
+
 
     }
 

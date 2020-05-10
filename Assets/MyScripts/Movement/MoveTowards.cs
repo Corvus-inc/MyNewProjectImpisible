@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class MoveTowards : MonoBehaviour
 {
+#pragma warning disable 0649
     [SerializeField]
     private Transform s_objectPosition;
     [SerializeField]
     private Transform s_positionStop;
     [SerializeField]
     private float s_speed = 0.5f;
+#pragma warning restore 0649
+
     private void Start()
     {
         

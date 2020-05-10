@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 
+/// </summary>
 public class CharacterON : MonoBehaviour
 {
     private Transform obj_Transform;
@@ -10,7 +12,7 @@ public class CharacterON : MonoBehaviour
     public CharacterController controller;
 
     public float speed = 12f;//Скорость движения
-    public float speedRotate = 1f;//Скорость поворота
+    public float speedRotate = 50f;//Скорость поворота
     public float gravity = -9.81f;//Значение ускорения свободного падения.
     public float jumpHeight = 3f;
 
@@ -48,10 +50,10 @@ public class CharacterON : MonoBehaviour
             controller.Move(move * speed * Time.deltaTime);// Метод который двигает контроллер по направлению движения, указанного осями и внесенного в переменную move/ Также, вектор умножен на  Дельту Времени и Переменную задающую скорость - так скорость регулируется из оболочки.
         
 
-        //if(Input.GetButtonDown("Jump") && isGrounded) //Прыжок
-        //{
-        //    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
-        //}
+        if(Input.GetButtonDown("Jump") && isGrounded) //Прыжок
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); 
+        }
 
         velocity.y += gravity * Time.deltaTime;
 
@@ -63,8 +65,8 @@ public class CharacterON : MonoBehaviour
             controller.Move(Vector3.up);
         }
 
-        
-        if(z<0)obj_Transform.Rotate(-Vector3.up * x * speedRotate * Time.deltaTime);//Условная конструкция для правильного движения задним ходом на транспорте.
+        //Условная конструкция для правильного движения задним ходом на транспорте.
+        if(z<0)obj_Transform.Rotate(-Vector3.up * x * speedRotate * Time.deltaTime);
         else obj_Transform.Rotate(Vector3.up * x * speedRotate * Time.deltaTime);
 
     }
