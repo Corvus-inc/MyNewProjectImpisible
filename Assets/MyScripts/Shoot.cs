@@ -18,7 +18,7 @@ public class Shoot : MonoBehaviour
     [SerializeField]
     public GameObject point;//Место появления пули в момент выстрела.
 
-    float timeInSec = 10;
+    float timeInMsec = 10;
     public PoolObjectGame NewPool;
     public bool shootDontStop = false;
     [Range(1, 1000)]
@@ -50,7 +50,7 @@ public class Shoot : MonoBehaviour
         {
             GameObject ReadyGo = NewPool.ObjectLeavePool(); //Взять объект из пула.
            
-            StartCoroutine(OffAfterTime(timeInSec, ReadyGo));//Запустить таймеры.
+            StartCoroutine(OffAfterTime(timeInMsec, ReadyGo));//Запустить таймеры.
             StartCoroutine(StartAfterTime(coolDown*Time.deltaTime));
             coolDownFlag = false;
          

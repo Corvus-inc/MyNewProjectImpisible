@@ -14,6 +14,12 @@ TagManager:
   - 
   - 
   - Ground
+  - Player
+  - 
+  - 
+  - 
+  - 4096
+  - 8192
   - 
   - 
   - 
@@ -30,13 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - 2147483648
   m_SortingLayers:
   - name: Default
     uniqueID: 0

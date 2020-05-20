@@ -5,6 +5,8 @@ using UnityEngine;
 /// Скрифпт турели имеет два варианта поворота объекта. Если на оъекте висит Rigidbody, то обыект по завершении поворота продолжает  двигаться в направлении.... Куда-то..
 /// 
 /// </summary>
+/// 
+
 public class TurellScript : MonoBehaviour
 {
     private Transform player;
