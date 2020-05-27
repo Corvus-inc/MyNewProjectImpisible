@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 2278628439682388806}
   - component: {fileID: 2278628439682388805}
   m_Layer: 0
-  m_Name: SuperTurel
+  m_Name: SuperTurel 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,6 +428,7 @@ MonoBehaviour:
   s_BulletObject: {fileID: 0}
   s_PoolNum: 100
   s_PowerBullet: 50
+  s_DontStop: 0
   s_StartPoint: {fileID: 2278628440624166257}
   s_CoolDown: 1
 --- !u!114 &2278628439682388806

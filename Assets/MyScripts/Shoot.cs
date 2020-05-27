@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Класс реализации выстрела напрямую из пула объектов. В этом классе прописывается
 /// сам объект, его сила и точка откуда он будет появляться.
-/// Количество оюъектов регулируется, непосредственно, в классе создания пула объектов.
+/// Количество объектов регулируется, непосредственно, в классе создания пула объектов.
 /// 
 /// Было бы неплохо сделать выбор кнопки для выстрела.
 /// </summary>
@@ -53,8 +53,8 @@ public class Shoot : MonoBehaviour
             StartCoroutine(OffAfterTime(timeInMsec, ReadyGo));//Запустить таймеры.
             StartCoroutine(StartAfterTime(coolDown*Time.deltaTime));
             coolDownFlag = false;
-         
-            ReadyGo.SetActive(true);// Включить объект. Спозиционировать и отправить в полет.
+         // Включить объект. Спозиционировать и отправить в полет.
+            ReadyGo.SetActive(true);
             ReadyGo.transform.position = point.transform.position;
             ReadyGo.transform.rotation = point.transform.rotation;
             ReadyGo.GetComponent<Rigidbody>().velocity = point.transform.forward * power;

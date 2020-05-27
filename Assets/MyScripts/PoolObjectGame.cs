@@ -25,9 +25,7 @@ public class PoolObjectGame : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        print("hi");
-
-        
+               
 
         pool = new List<GameObject>(PoolNum);
         poolTemporary = new List<GameObject>(PoolNum);

@@ -23,8 +23,7 @@ public class Turret : MonoBehaviour
 	private int index;
 	private float curFireRate;
 	private Quaternion defaultRot = Quaternion.identity;
-	
-	
+	private UnitHP PP;
 
 	void Awake()
 	{
@@ -37,11 +36,11 @@ public class Turret : MonoBehaviour
 						//Большая часть Эвейка - формальности, которые важны, чтобы не было ошибок - Проверка систем перед запуском.
 		
 	}
-	//После проверки на того кто оказался в триггере. Назначется трансформ объекта в Таргет и выключается триггер. Триггера как бы исчез. А обновление класса запустилось
+	//После проверки на того кто оказался в триггере. Назначается трансформ объекта в Таргет и выключается триггер. Триггер как бы исчез. А обновление класса запустилось
 	void OnTriggerEnter(Collider other)
 	{
 		if (CheckLayerMask(other.gameObject, layerMask))
-			{
+		{
 			target = other.transform;
 			turretTrigger.enabled = false;
 			enabled = true;

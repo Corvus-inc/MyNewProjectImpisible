@@ -21,7 +21,7 @@ using UnityEngine;
     public float s_CoolDown;
 
     private PoolObjectGame s_PoolObject;
-    // Тут Должен быть контейфнер. Если null, то использовать s_PoolObject как компонент, если 
+    // Тут Должен быть контейнер. Если null, то использовать s_PoolObject как компонент, если 
     private Shoot s_ShootShell;  
     
     

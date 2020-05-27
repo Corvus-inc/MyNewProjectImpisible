@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 232617699039963526}
   - component: {fileID: -2764765095623355569}
   - component: {fileID: 5342423611012287322}
+  - component: {fileID: -2334291508179623054}
   m_Layer: 0
   m_Name: Shell 1
   m_TagString: Untagged
@@ -110,3 +111,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2987081, y: 0.29870814, z: 0.5252612}
   m_Center: {x: 0, y: 0.000000007450581, z: 0.19800001}
+--- !u!114 &-2334291508179623054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232617699037706054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74622f0b0e2732d478b2ba16858ab940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  fireForce: 20
+  rechargeTime: 1
+  lifeTime: 5

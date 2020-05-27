@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,4 +34,9 @@ public class TurretBullet : MonoBehaviour
 			Destroy(gameObject);
 		}
 	}
+
+    internal void SetBullet(object layerMask, Vector3 forward)
+    {
+        throw new NotImplementedException();
+    }
 }
